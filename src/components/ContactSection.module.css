@@ -1,0 +1,217 @@
+.section {
+  padding: 90px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.sectionIndex {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--stealth-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.infoText {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* Copy Email Trigger Box */
+.emailCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.emailCard:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+
+.emailContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.emailLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.emailAddress {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.copyBadge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--stealth-accent);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+}
+
+.emailCard:hover .copyBadge {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+/* Social links list */
+.socialList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-family: var(--font-mono);
+  transition: color var(--transition-fast);
+}
+
+.socialLink:hover {
+  color: var(--text-primary);
+}
+
+.socialArrow {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  transition: transform var(--transition-fast);
+}
+
+.socialLink:hover .socialArrow {
+  transform: translateX(3px);
+  color: var(--text-primary);
+}
+
+/* Minimalist Form */
+.form {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.input, .textarea {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: var(--radius-xs);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.input:focus, .textarea:focus {
+  border-color: var(--stealth-accent);
+  background: #13161c;
+  box-shadow: 0 0 10px rgba(120, 130, 148, 0.15);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.submitBtn {
+  background: #14171d;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.submitBtn:hover {
+  background: #1c2027;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.successMessage {
+  padding: 14px;
+  background: rgba(86, 95, 111, 0.12);
+  border: 1px solid var(--stealth-dot-3);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

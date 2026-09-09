@@ -1,0 +1,140 @@
+.section {
+  padding: 90px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.sectionIndex {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--stealth-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+/* Philosophy block */
+.philosophyBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subHeading {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subHeading::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--stealth-accent);
+  border-radius: 50%;
+}
+
+.paragraph {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.quoteBox {
+  background: #101217;
+  border-left: 2px solid var(--stealth-dot-3);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: relative;
+  padding-left: 20px;
+  border-left: 1px solid var(--border-subtle);
+}
+
+.timelineItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timelineNode {
+  position: absolute;
+  left: -25px;
+  top: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--stealth-dot-1);
+  border: 1px solid var(--stealth-dot-3);
+}
+
+.timelineItem:first-child .timelineNode {
+  background: var(--stealth-accent);
+  box-shadow: 0 0 8px rgba(120, 130, 148, 0.4);
+}
+
+.timelinePeriod {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--stealth-accent);
+}
+
+.timelineRole {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.timelineCompany {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.timelineDesc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

@@ -1,0 +1,39 @@
+.footer {
+  padding: 40px 0;
+  background: #08090b;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sub-row */
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+.backToTop {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition-fast);
+}
+
+.backToTop:hover {
+  color: var(--text-primary);
+}
