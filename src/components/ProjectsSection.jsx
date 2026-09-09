@@ -15,10 +15,20 @@ const LANG_COLORS = {
   Default: "#586173",
 };
 
+function categorizeRepo(repo) {
+  const name = (repo.name || "").toLowerCase();
+  const lang = (repo.language || "").toLowerCase();
+  if (lang === "motoko" || name.includes("blockchain")) return "Blockchain";
+  if (lang === "php" || name.includes("laravel")) return "Backend";
+  if (name.includes("mern")) return "Full-Stack";
+  if (name.includes("react") || lang === "javascript" || lang === "typescript") return "Frontend";
+  return "Engineering";
+}
+
 export default function ProjectsSection() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [source, setSource] = useState("live");
+  const [error, setError] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [cloneCopied, setCloneCopied] = useState(false);
@@ -27,14 +37,38 @@ export default function ProjectsSection() {
     async function fetchRepos() {
       try {
         setLoading(true);
-        const res = await fetch("/api/github?username=rajrespall");
+        setError(null);
+        const res = await fetch("https://api.github.com/users/rajrespall/repos?sort=updated&per_page=100", {
+          headers: { Accept: "application/vnd.github.v3+json" },
+        });
+
+        if (!res.ok) {
+          throw new Error(`GitHub API request returned status ${res.status}`);
+        }
+
         const data = await res.json();
-        if (data && data.repos) {
-          setRepos(data.repos);
-          setSource(data.source || "live");
+        if (Array.isArray(data)) {
+          const mapped = data
+            .filter((r) => !r.fork || r.stargazers_count > 0)
+            .map((r) => ({
+              id: r.id,
+              name: r.name,
+              description: r.description || "Software repository on GitHub.",
+              language: r.language || "Code",
+              stars: r.stargazers_count || 0,
+              forks: r.forks_count || 0,
+              updatedAt: r.updated_at,
+              url: r.html_url,
+              topics: r.topics || [],
+              category: categorizeRepo(r),
+              defaultBranch: r.default_branch || "main",
+            }));
+
+          setRepos(mapped);
         }
       } catch (err) {
-        console.error("Failed to load GitHub repos:", err);
+        console.error("Failed to load GitHub repositories:", err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -65,8 +99,8 @@ export default function ProjectsSection() {
             <div className={styles.metaStatusRow}>
               <span className={styles.sectionIndex}>01 / Selected Repositories</span>
               <span className={styles.syncBadge}>
-                <span className={`${styles.syncDot} ${source === "live" ? styles.live : ""}`} />
-                <span>github.com/rajrespall // {repos.length || 11} repos</span>
+                <span className={`${styles.syncDot} ${styles.live}`} />
+                <span>github.com/rajrespall // {repos.length} repos</span>
               </span>
             </div>
             <h2 className={styles.sectionTitle}>Open Source & Systems</h2>
@@ -92,6 +126,13 @@ export default function ProjectsSection() {
             {[1, 2, 3, 4].map((n) => (
               <div key={n} className={styles.skeletonCard} />
             ))}
+          </div>
+        )}
+
+        {/* Error State */}
+        {!loading && error && repos.length === 0 && (
+          <div style={{ padding: "40px 0", textAlign: "center", color: "var(--text-muted)", fontFamily: "var(--font-mono)", fontSize: "0.85rem" }}>
+            Unable to reach GitHub API directly ({error}). Please check your connection or GitHub API limits.
           </div>
         )}
 
