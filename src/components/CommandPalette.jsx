@@ -48,7 +48,7 @@ export default function CommandPalette({ isOpen, onClose }) {
 
   const copyEmail = () => {
     if (navigator?.clipboard) {
-      navigator.clipboard.writeText("architect@stealth.io");
+      navigator.clipboard.writeText("rajeshtecsonrespall@gmail.com");
     }
     onClose();
   };
@@ -76,13 +76,25 @@ export default function CommandPalette({ isOpen, onClose }) {
     onClose();
   };
 
+  const openLinkedin = () => {
+    window.open("https://www.linkedin.com/in/rajesh-respall-701a67367?utm_source=share_via&utm_content=profile&utm_medium=member_android", "_blank");
+    onClose();
+  };
+
+  const openFacebook = () => {
+    window.open("https://www.facebook.com/rajesh.tecsonrespall", "_blank");
+    onClose();
+  };
+
   const allItems = [
     { type: "nav", label: "01 / Selected Works (GitHub Repos)", hash: "#works", badge: "Navigation" },
     { type: "nav", label: "02 / Stack & Capabilities", hash: "#stack", badge: "Navigation" },
     { type: "nav", label: "03 / Philosophy & Trajectory", hash: "#about", badge: "Navigation" },
     { type: "nav", label: "04 / Inquiries & Contact", hash: "#contact", badge: "Navigation" },
     { type: "action", label: "Open GitHub Profile (github.com/rajrespall)", action: openGithub, badge: "External" },
-    { type: "action", label: "Copy Direct Email (architect@stealth.io)", action: copyEmail, badge: "Action" },
+    { type: "action", label: "Open LinkedIn Profile", action: openLinkedin, badge: "External" },
+    { type: "action", label: "Open Facebook Profile", action: openFacebook, badge: "External" },
+    { type: "action", label: "Copy Direct Email (rajeshtecsonrespall@gmail.com)", action: copyEmail, badge: "Action" },
     { type: "theme", label: "Palette: Stealth Matte (Default)", mode: "default", badge: "Theme" },
     { type: "theme", label: "Palette: Obsidian Titanium", mode: "obsidian", badge: "Theme" },
     { type: "theme", label: "Palette: Pure Carbon Monolith", mode: "carbon", badge: "Theme" },

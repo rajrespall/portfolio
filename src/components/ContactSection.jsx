@@ -8,7 +8,7 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const email = "architect@stealth.io";
+  const email = "rajeshtecsonrespall@gmail.com";
 
   const handleCopyEmail = () => {
     if (navigator?.clipboard) {
@@ -36,8 +36,8 @@ export default function ContactSection() {
           {/* Information & Direct Channels */}
           <div className={styles.infoCol}>
             <p className={styles.infoText}>
-              Available for select principal architecture advisory, mission-critical systems engineering,
-              and design system consulting.
+              Available for internal systems development, full-stack web applications,
+              and software engineering opportunities.
             </p>
 
             {/* Interactive Email Copy Card */}
@@ -58,7 +58,7 @@ export default function ContactSection() {
               </span>
             </div>
 
-            {/* Minimal Social & Verification Channels */}
+            {/* Minimal Social Channels */}
             <div className={styles.socialList}>
               <a
                 href="https://github.com/rajrespall"
@@ -71,28 +71,24 @@ export default function ContactSection() {
               </a>
 
               <a
-                href="https://x.com"
+                href="https://www.linkedin.com/in/rajesh-respall-701a67367?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
               >
-                <span>x.com/stealth_arch</span>
+                <span>linkedin.com/in/rajesh-respall</span>
                 <span className={styles.socialArrow}>→</span>
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.facebook.com/rajesh.tecsonrespall"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
               >
-                <span>linkedin.com/in/stealth</span>
+                <span>facebook.com/rajesh.tecsonrespall</span>
                 <span className={styles.socialArrow}>→</span>
               </a>
-
-              <div className={styles.socialLink} style={{ color: "var(--text-muted)", cursor: "default" }}>
-                <span>PGP: 4A8F B012 99E2 71C4</span>
-              </div>
             </div>
           </div>
 
