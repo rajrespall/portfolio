@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -12,6 +12,27 @@ import CommandPalette from "@/components/CommandPalette";
 
 export default function Home() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [theme, setTheme] = useState("9009");
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("portfolio_theme") || "9009";
+      setTheme(saved);
+      document.documentElement.setAttribute("data-theme", saved);
+    } catch (e) {
+      // Ignore local storage error
+    }
+  }, []);
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+    try {
+      localStorage.setItem("portfolio_theme", newTheme);
+    } catch (e) {
+      // Ignore local storage error
+    }
+  };
 
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
@@ -30,6 +51,8 @@ export default function Home() {
       <CommandPalette
         isOpen={commandPaletteOpen}
         onClose={() => setCommandPaletteOpen(false)}
+        currentTheme={theme}
+        onSelectTheme={handleThemeChange}
       />
     </div>
   );

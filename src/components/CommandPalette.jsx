@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./CommandPalette.module.css";
 
-export default function CommandPalette({ isOpen, onClose }) {
+export default function CommandPalette({ isOpen, onClose, currentTheme = "9009", onSelectTheme }) {
   const [query, setQuery] = useState("");
   const inputRef = useRef(null);
 
@@ -13,8 +13,6 @@ export default function CommandPalette({ isOpen, onClose }) {
         e.preventDefault();
         if (isOpen) {
           onClose();
-        } else {
-          // Open from parent
         }
       }
       if (e.key === "Escape" && isOpen) {
@@ -54,19 +52,13 @@ export default function CommandPalette({ isOpen, onClose }) {
   };
 
   const setThemeMode = (mode) => {
-    const root = document.documentElement;
-    if (mode === "default") {
-      root.style.setProperty("--bg-primary", "#090a0d");
-      root.style.setProperty("--bg-secondary", "#0e1014");
-      root.style.setProperty("--stealth-accent", "#788294");
-    } else if (mode === "obsidian") {
-      root.style.setProperty("--bg-primary", "#08090d");
-      root.style.setProperty("--bg-secondary", "#0b0e14");
-      root.style.setProperty("--stealth-accent", "#6b7d99");
-    } else if (mode === "carbon") {
-      root.style.setProperty("--bg-primary", "#0a0a0a");
-      root.style.setProperty("--bg-secondary", "#121212");
-      root.style.setProperty("--stealth-accent", "#808080");
+    if (onSelectTheme) {
+      onSelectTheme(mode);
+    } else {
+      document.documentElement.setAttribute("data-theme", mode);
+      try {
+        localStorage.setItem("portfolio_theme", mode);
+      } catch (e) {}
     }
     onClose();
   };
@@ -95,9 +87,8 @@ export default function CommandPalette({ isOpen, onClose }) {
     { type: "action", label: "Open LinkedIn Profile", action: openLinkedin, badge: "External" },
     { type: "action", label: "Open Facebook Profile", action: openFacebook, badge: "External" },
     { type: "action", label: "Copy Direct Email (rajeshtecsonrespall@gmail.com)", action: copyEmail, badge: "Action" },
-    { type: "theme", label: "Palette: Stealth Matte (Default)", mode: "default", badge: "Theme" },
-    { type: "theme", label: "Palette: Obsidian Titanium", mode: "obsidian", badge: "Theme" },
-    { type: "theme", label: "Palette: Pure Carbon Monolith", mode: "carbon", badge: "Theme" },
+    { type: "theme", label: "Palette: 9009 Retro Keycap (Default Light)", mode: "9009", badge: currentTheme === "9009" ? "Active" : "Theme" },
+    { type: "theme", label: "Palette: Stealth Matte (Dark)", mode: "dark", badge: currentTheme === "dark" || currentTheme === "stealth" ? "Active" : "Theme" },
   ];
 
   const filteredItems = allItems.filter((item) =>
@@ -116,7 +107,7 @@ export default function CommandPalette({ isOpen, onClose }) {
             ref={inputRef}
             type="text"
             className={styles.input}
-            placeholder="Type command or search sections..."
+            placeholder="Type command, palette, or search sections..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -124,9 +115,9 @@ export default function CommandPalette({ isOpen, onClose }) {
         </div>
 
         <div className={styles.list}>
-          <div className={styles.groupLabel}>Quick Commands</div>
+          <div className={styles.groupLabel}>Quick Commands & Palettes</div>
           {filteredItems.length === 0 ? (
-            <div style={{ padding: "16px", color: "var(--text-muted)", fontSize: "0.85rem", textAlign: "center" }}>
+            <div style={{ padding: "20px", color: "var(--text-muted)", fontSize: "0.85rem", textAlign: "center" }}>
               No matching commands
             </div>
           ) : (
@@ -151,11 +142,11 @@ export default function CommandPalette({ isOpen, onClose }) {
         </div>
 
         <div className={styles.footer}>
-          <span>stealth navigation console</span>
+          <span>{currentTheme === "9009" ? "9009 vintage console" : "stealth navigation console"}</span>
           <div className={styles.footerDots}>
-            <span className={styles.footerDot} style={{ background: "var(--stealth-dot-1)" }} />
-            <span className={styles.footerDot} style={{ background: "var(--stealth-dot-2)" }} />
-            <span className={styles.footerDot} style={{ background: "var(--stealth-dot-3)" }} />
+            <span className={styles.footerDot} style={{ background: "var(--theme-dot-1)" }} />
+            <span className={styles.footerDot} style={{ background: "var(--theme-dot-2)" }} />
+            <span className={styles.footerDot} style={{ background: "var(--theme-dot-3)" }} />
           </div>
         </div>
       </div>

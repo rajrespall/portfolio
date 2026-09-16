@@ -10,7 +10,7 @@
 .sectionIndex {
   font-family: var(--font-mono);
   font-size: 0.76rem;
-  color: var(--stealth-accent);
+  color: var(--theme-accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   display: block;
@@ -35,13 +35,14 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 28px;
+  box-shadow: var(--shadow-card);
   transition: all var(--transition-smooth);
 }
 
 .card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-hover);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .cardHeader {
@@ -50,7 +51,7 @@
   justify-content: space-between;
   margin-bottom: 20px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .cardTitle {
@@ -99,7 +100,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--stealth-accent);
+  background: var(--theme-accent);
 }
 
 .itemContext {

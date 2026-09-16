@@ -25,7 +25,7 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-badge);
   border: 1px solid var(--border-subtle);
   padding: 5px 12px;
   border-radius: var(--radius-full);
@@ -47,7 +47,7 @@
 }
 
 .titleAccent {
-  color: var(--stealth-accent);
+  color: var(--theme-accent);
 }
 
 .description {
@@ -71,9 +71,9 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #14171d;
-  color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
   padding: 12px 24px;
   border-radius: var(--radius-sm);
   font-size: 0.88rem;
@@ -83,17 +83,18 @@
 }
 
 .primaryBtn:hover {
-  background: #1c2028;
-  border-color: rgba(255, 255, 255, 0.28);
+  background: var(--theme-accent);
+  border-color: var(--theme-accent);
+  color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-card);
 }
 
 .secondaryBtn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: transparent;
+  background: var(--bg-badge);
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle);
   padding: 12px 24px;
@@ -107,7 +108,7 @@
 .secondaryBtn:hover {
   color: var(--text-primary);
   border-color: var(--border-medium);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-card);
 }
 
 /* Minimalist Stats Grid */

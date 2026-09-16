@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--modal-overlay);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 300;
@@ -15,13 +15,14 @@
 .modal {
   width: 100%;
   max-width: 580px;
-  background: #101217;
+  background: var(--bg-elevated);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-md);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+  box-shadow: var(--shadow-modal);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .searchHeader {
@@ -30,7 +31,7 @@
   gap: 12px;
   padding: 16px 20px;
   border-bottom: 1px solid var(--border-subtle);
-  background: #0d0f14;
+  background: var(--bg-secondary);
 }
 
 .searchIcon {
@@ -55,7 +56,7 @@
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-muted);
-  background: #16181f;
+  background: var(--bg-kbd);
   border: 1px solid var(--border-subtle);
   padding: 2px 6px;
   border-radius: var(--radius-xs);
@@ -96,7 +97,7 @@
 }
 
 .item:hover, .item.active {
-  background: #171b23;
+  background: var(--bg-active);
   color: var(--text-primary);
 }
 
@@ -113,7 +114,7 @@
 }
 
 .item:hover .itemBadge {
-  color: var(--stealth-accent);
+  color: var(--theme-accent);
 }
 
 .footer {
@@ -125,7 +126,7 @@
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-muted);
-  background: #0d0f14;
+  background: var(--bg-secondary);
 }
 
 .footerDots {

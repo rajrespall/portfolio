@@ -17,7 +17,7 @@ export default function Header({ onOpenCommandPalette }) {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        {/* Top left empty slot */}
+        {/* Top-left empty slot to balance navigation */}
         <div className={styles.leftSlot} />
 
         {/* Clean minimal navigation */}

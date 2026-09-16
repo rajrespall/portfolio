@@ -3,11 +3,11 @@
   top: 0;
   z-index: 100;
   width: 100%;
-  background: rgba(9, 10, 13, 0.85);
+  background: var(--header-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
-  transition: border-color var(--transition-smooth);
+  transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .inner {
@@ -72,7 +72,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-badge);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   padding: 6px 12px;
@@ -84,13 +84,13 @@
 }
 
 .cmdTrigger:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--bg-card);
   border-color: var(--border-hover);
   color: var(--text-primary);
 }
 
 .kbd {
-  background: #191c23;
+  background: var(--bg-kbd);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   padding: 1px 5px;
@@ -115,6 +115,11 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.mobileToggle:hover {
+  background: var(--bg-badge);
 }
 
 .mobileMenu {
@@ -122,7 +127,7 @@
   flex-direction: column;
   gap: 16px;
   padding: 20px 24px 24px;
-  background: #0d0f13;
+  background: var(--bg-elevated);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -135,7 +140,7 @@
   text-decoration: none;
   font-size: 0.95rem;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .mobileNavLink:hover {

@@ -1,7 +1,8 @@
 .footer {
   padding: 40px 0;
-  background: #08090b;
+  background: var(--bg-secondary);
   border-top: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-smooth);
 }
 
 .inner {
@@ -35,5 +36,5 @@
 }
 
 .backToTop:hover {
-  color: var(--text-primary);
+  color: var(--theme-accent);
 }

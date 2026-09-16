@@ -10,7 +10,7 @@
 .sectionIndex {
   font-family: var(--font-mono);
   font-size: 0.76rem;
-  color: var(--stealth-accent);
+  color: var(--theme-accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   display: block;
@@ -54,11 +54,13 @@
   justify-content: space-between;
   cursor: pointer;
   transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-card);
 }
 
 .emailCard:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .emailContent {
@@ -83,8 +85,8 @@
 .copyBadge {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--stealth-accent);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--theme-accent);
+  background: var(--bg-badge);
   border: 1px solid var(--border-subtle);
   padding: 4px 10px;
   border-radius: var(--radius-xs);
@@ -126,7 +128,7 @@
 
 .socialLink:hover .socialArrow {
   transform: translateX(3px);
-  color: var(--text-primary);
+  color: var(--theme-accent);
 }
 
 /* Minimalist Form */
@@ -138,6 +140,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  box-shadow: var(--shadow-card);
 }
 
 .formGroup {
@@ -167,9 +170,9 @@
 }
 
 .input:focus, .textarea:focus {
-  border-color: var(--stealth-accent);
-  background: #13161c;
-  box-shadow: 0 0 10px rgba(120, 130, 148, 0.15);
+  border-color: var(--theme-accent);
+  background: var(--bg-input-focus);
+  box-shadow: 0 0 10px var(--theme-glow);
 }
 
 .textarea {
@@ -178,9 +181,9 @@
 }
 
 .submitBtn {
-  background: #14171d;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--text-primary);
+  background: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  color: var(--bg-primary);
   font-family: var(--font-mono);
   font-size: 0.82rem;
   padding: 12px 20px;
@@ -194,14 +197,15 @@
 }
 
 .submitBtn:hover {
-  background: #1c2027;
-  border-color: rgba(255, 255, 255, 0.3);
+  background: var(--theme-accent);
+  border-color: var(--theme-accent);
+  color: #ffffff;
 }
 
 .successMessage {
   padding: 14px;
-  background: rgba(86, 95, 111, 0.12);
-  border: 1px solid var(--stealth-dot-3);
+  background: var(--theme-accent-subtle);
+  border: 1px solid var(--theme-accent);
   border-radius: var(--radius-xs);
   color: var(--text-primary);
   font-family: var(--font-mono);
