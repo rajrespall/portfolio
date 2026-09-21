@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProjectsSection from "@/components/ProjectsSection";
+import PixelGame from "@/components/PixelGame";
 import TechStackSection from "@/components/TechStackSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
@@ -41,6 +42,7 @@ export default function Home() {
       <main>
         <Hero />
         <ProjectsSection />
+        <PixelGame />
         <TechStackSection />
         <AboutSection />
         <ContactSection />

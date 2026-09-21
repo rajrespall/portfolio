@@ -1,0 +1,158 @@
+.section {
+  padding: 90px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header {
+  max-width: 660px;
+  margin-bottom: 36px;
+}
+
+.sectionIndex {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--theme-accent);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  color: var(--text-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.gameCard {
+  max-width: 680px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.gameTopline,
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.gameTopline {
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+
+.gameLabel::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 7px 1px 0;
+  border-radius: 50%;
+  background: var(--theme-accent);
+  box-shadow: 0 0 8px var(--theme-glow);
+}
+
+.score {
+  color: var(--theme-accent);
+}
+
+.canvas {
+  --game-bg: var(--bg-code);
+  --game-grid: var(--border-subtle);
+  --game-player: var(--theme-accent);
+  --game-obstacle: var(--theme-accent-coral);
+  --game-highlight: var(--text-primary);
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  image-rendering: pixelated;
+  border: 1px solid var(--border-medium);
+  background: var(--bg-code);
+}
+
+.controls {
+  padding-top: 14px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+}
+
+.key {
+  display: inline-block;
+  min-width: 21px;
+  padding: 2px 5px;
+  color: var(--text-secondary);
+  text-align: center;
+  background: var(--bg-kbd);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xs);
+}
+
+.button,
+.touchButton {
+  color: var(--text-primary);
+  font: inherit;
+  cursor: pointer;
+  background: var(--bg-kbd);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.button {
+  padding: 8px 12px;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+
+.button:hover,
+.touchButton:hover {
+  background: var(--theme-accent-subtle);
+  border-color: var(--theme-accent);
+}
+
+.touchControls {
+  display: none;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.touchButton {
+  flex: 1;
+  padding: 10px;
+  font-size: 1.1rem;
+  touch-action: none;
+}
+
+@media (max-width: 600px) {
+  .gameCard {
+    padding: 12px;
+  }
+
+  .controls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .touchControls {
+    display: flex;
+  }
+}
