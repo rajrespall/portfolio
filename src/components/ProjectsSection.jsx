@@ -38,11 +38,26 @@ export default function ProjectsSection() {
       try {
         setLoading(true);
         setError(null);
+
+        // Check for cached data first
+        const cached = localStorage.getItem("portfolio_repos");
+        const cacheTimestamp = localStorage.getItem("portfolio_repos_timestamp");
+        const ONE_DAY = 24 * 60 * 60 * 1000;
+
+        if (cached && cacheTimestamp && (Date.now() - parseInt(cacheTimestamp)) < ONE_DAY) {
+          setRepos(JSON.parse(cached));
+          setLoading(false);
+          return;
+        }
+
         const res = await fetch("https://api.github.com/users/rajrespall/repos?sort=updated&per_page=100", {
           headers: { Accept: "application/vnd.github.v3+json" },
         });
 
         if (!res.ok) {
+          if (res.status === 403) {
+            throw new Error("GitHub API rate limit exceeded. Please try again later.");
+          }
           throw new Error(`GitHub API request returned status ${res.status}`);
         }
 
@@ -65,6 +80,9 @@ export default function ProjectsSection() {
             }));
 
           setRepos(mapped);
+          // Cache the result
+          localStorage.setItem("portfolio_repos", JSON.stringify(mapped));
+          localStorage.setItem("portfolio_repos_timestamp", Date.now().toString());
         }
       } catch (err) {
         console.error("Failed to load GitHub repositories:", err);
