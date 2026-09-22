@@ -9,6 +9,8 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CommandPalette from "@/components/CommandPalette";
+import SnakeGame from "@/components/SnakeGame";
+import Game2048 from "@/components/Game2048";
 
 export default function Home() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
@@ -41,6 +43,36 @@ export default function Home() {
       <main>
         <Hero />
         <ProjectsSection />
+
+        <section style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4rem',
+          padding: '4rem 0'
+        }}>
+          <div className="container" style={{ textAlign: 'center', width: '100%' }}>
+            <h2 style={{
+              fontFamily: 'var(--font-mono)',
+              color: 'var(--text-secondary)',
+              marginBottom: '2rem',
+              fontSize: '1.5rem',
+              letterSpacing: '0.1em'
+            }}>
+              MINI_GAMES
+            </h2>
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '2rem'
+            }}>
+              <SnakeGame />
+              <Game2048 />
+            </div>
+          </div>
+        </section>
+
         <TechStackSection />
         <AboutSection />
         <ContactSection />

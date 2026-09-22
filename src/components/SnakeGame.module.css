@@ -1,0 +1,100 @@
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono, monospace);
+  margin: 2rem auto;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.gameTitle {
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.gameScore {
+  background: var(--bg-tertiary);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  box-sizing: border-box;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0.1px solid var(--border-subtle);
+}
+
+.snake {
+  background-color: var(--theme-accent);
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+}
+
+.food {
+  background-color: var(--theme-accent-coral);
+  border-radius: 2px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--modal-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: var(--radius-md);
+}
+
+.modal {
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.resetBtn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--theme-accent);
+  border: none;
+  color: var(--bg-primary);
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition-fast);
+}
+
+.resetBtn:hover {
+  opacity: 0.9;
+}
